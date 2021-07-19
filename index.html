@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="styles/main.css" type="text/css" rel="stylesheet">
+	<script src="scripts/index.js" type="module" defer></script>
+	<title>Calculator</title>
+</head>
+
+<body>
+	<section id="main" style="height: 100%;">
+		<div class="container d-flex center" style="height: 100%; flex-grow: 1; flex-shrink: 1;">
+			<div class="container grid">
+				<div class="d-flex result-screen">
+					0
+				</div>
+				<button class="btn special" data-value="BACK" data-type="special">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+						<path d="M0 0h24v24H0V0z" fill="none" />
+						<path d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21v-2z" />
+					</svg>
+				</button>
+				<button class="btn special" data-value="CLR" data-type="special">CLR</button>
+				<button class="btn special" data-value="DELETE" data-type="special">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+						<path d="M0 0h24v24H0V0z" fill="none" />
+						<path
+							d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z" />
+					</svg>
+				</button>
+				<button class="btn operator" data-value="/" data-type="operator">/</button>
+				<button class="btn numeric" data-value="1" data-type="numeric">1</button>
+				<button class="btn numeric" data-value="2" data-type="numeric">2</button>
+				<button class="btn numeric" data-value="3" data-type="numeric">3</button>
+				<button class="btn operator" data-value="*" data-type="operator">*</button>
+				<button class="btn numeric" data-value="4" data-type="numeric">4</button>
+				<button class="btn numeric" data-value="5" data-type="numeric">5</button>
+				<button class="btn numeric" data-value="6" data-type="numeric">6</button>
+				<button class="btn operator" data-value="-" data-type="operator">-</button>
+				<button class="btn numeric" data-value="7" data-type="numeric">7</button>
+				<button class="btn numeric" data-value="8" data-type="numeric">8</button>
+				<button class="btn numeric" data-value="9" data-type="numeric">9</button>
+				<button class="btn operator" data-value="+" data-type="operator">+</button>
+				<button class="btn operator" data-value="%" data-type="operator">%</button>
+				<button class="btn numeric" data-value="0" data-type="numeric">0</button>
+				<button class="btn numeric" data-value="." data-type="numeric">.</button>
+				<button class="btn evaluate" data-value="=" data-type="evaluate">=</button>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

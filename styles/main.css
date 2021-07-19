@@ -1,0 +1,177 @@
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--btn-size: 50px;
+	--grid-cols: 4;
+	--grid-rows: 5;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.center {
+	justify-content: center;
+	align-items: center;
+}
+
+.btn {
+	background-color: rgb(214, 57, 57);
+	padding: 5px 20px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	box-shadow: 1px 2px 0px 2px rgb(190, 27, 27);
+	transition: all 0.1s;
+	width: var(--btn-size);
+	height: var(--btn-size);
+
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.btn:hover {
+	background-color: rgb(207, 60, 60);
+	cursor: pointer;
+}
+
+.btn:active {
+	background-color: rgb(207, 60, 60);
+	transform: translate(2px, 3px);
+	box-shadow: 1px 1px 0px 0px rgb(190, 27, 27);
+}
+
+.numeric {
+	background-color: rgb(214, 57, 57);
+	box-shadow: 1px 2px 0px 2px rgb(190, 27, 27);
+}
+
+.numeric:hover {
+	background-color: rgb(207, 60, 60);
+}
+
+.numeric:active {
+	background-color: rgb(207, 60, 60);
+	box-shadow: 1px 1px 0px 0px rgb(190, 27, 27);
+}
+
+svg {
+	fill: #fff;
+}
+
+.special {
+	background-color: rgb(214, 177, 57);
+	box-shadow: 1px 2px 0px 2px rgb(190, 147, 27);
+	padding: 0px 0px;
+	font-size: 1.1rem;
+}
+
+.special:hover {
+	background-color: rgb(207, 185, 60);
+}
+
+.special:active {
+	background-color: rgb(207, 185, 60);
+	box-shadow: 1px 1px 0px 0px rgb(190, 166, 27);
+}
+
+.operator {
+	background-color: rgb(75, 214, 57);
+	box-shadow: 1px 2px 0px 2px rgb(54, 190, 27);
+}
+
+.operator:hover {
+	background-color: rgb(60, 207, 80);
+}
+
+.operator:active {
+	background-color: rgb(60, 207, 80);
+	box-shadow: 1px 1px 0px 0px rgb(54, 190, 27);
+}
+
+.evaluate {
+	background-color: rgb(57, 164, 214);
+	box-shadow: 1px 2px 0px 2px rgb(27, 125, 190);
+}
+
+.evaluate:hover {
+	background-color: rgb(60, 148, 207);
+}
+
+.evaluate:active {
+	background-color: rgb(60, 148, 207);
+	box-shadow: 1px 1px 0px 0px rgb(27, 130, 190);
+}
+
+.result-screen {
+	grid-column: 1 / calc(var(--grid-cols) + 1);
+	background-color: rgba(146, 201, 226, 0.986);
+	color: rgb(0, 0, 0);
+	font-size: 1.5rem;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 5px 10px;
+	font-weight: bold;
+	border: 1px solid rgb(27, 125, 190);
+	border-radius: 3px;
+	overflow-x: clip;
+}
+
+.container {
+	padding: 10px;
+}
+
+.grid {
+	display: grid;
+	width: fit-content;
+	grid-template-columns: repeat(var(--grid-cols), var(--btn-size));
+	grid-template-rows: repeat(var(--grid-rows),  var(--btn-size));
+	border: none;
+	border-radius: 5px;
+	box-shadow:  
+		inset 0 0 1px 0px rgba(0, 0, 0, 0.1),
+		inset 0 0 2px 0px rgba(0, 0, 0, 0.1),
+		0 0 1px 0px rgba(0, 0, 0, 0.1), 
+		0 0 2px 0px rgba(0, 0, 0, 0.1);
+	gap: 10px;
+	background-color: transparent;
+	padding: 10px;
+}
+
+@media screen and (max-width: 300px) {
+	:root {
+		--btn-size: 30px;
+	}
+
+	.result-screen {
+		font-size: 1rem;
+	}
+
+	.btn {
+		font-size: 0.8rem;
+		padding: 0 0;
+	}
+
+	.special {
+		font-size: 0.7rem;
+	}
+
+	svg {
+		width: 12px;
+	}
+
+	.grid {
+		gap: 5px;
+	}
+}
