@@ -1,12 +1,71 @@
 import resultScreen from "./result-screen.js";
-import stateManager from "./state-manager.js";
 
 const buttons = document.querySelectorAll(".btn");
 
-const handleBtnClick = (e) => {
-	let button = e.target;
+const handleSpecialInput = (value) => {
+	switch (value) {
+		case "CLR":
+			resultScreen.resetScreen();
+			break;
+		
+		case "BACK":
+			resultScreen.swapBack();
+			break;
 
-	resultScreen.addToScreen(button.dataset.value);
+		case "DELETE":
+			resultScreen.deleteFromScreen();
+			break;
+
+		default:
+	}
+};
+
+const handleOperatorInput = (value) => {
+	switch (value) {
+		case "+":
+		case "-":
+		case "*":
+		case "/":
+		case "%":
+			resultScreen.operate(value);
+			break;
+
+		default:
+	}
+};
+
+const handleEvaluateInput = () => {
+	resultScreen.evaluate();
+};
+
+const handleInput = (type, value) => {
+	console.log(type, value);
+
+	switch (type) {
+		case "numeric":
+			resultScreen.addToScreen(value);
+			break;
+
+		case "special":
+			handleSpecialInput(value);
+			break;
+
+		case "operator":
+			handleOperatorInput(value);
+			break;
+
+		case "evaluate":
+			handleEvaluateInput();
+			break;
+
+		default:
+	}
+};
+
+const handleBtnClick = (e) => {
+	let button = e.currentTarget;
+
+	handleInput(button.dataset.type, button.dataset.value);
 
 	button.classList.add("click");
 };
@@ -14,17 +73,44 @@ const handleBtnClick = (e) => {
 const validInputs = ["0123456789+-*/%.=".split(""), "Backspace", "Delete", "Tab"].flat(1);
 
 const handleKeyDown = (e) => {
-	let key = e.key;
+	e.preventDefault();
 
-	if (validInputs.includes(key)) {
-		if (key === "Backspace") {
-			resultScreen.deleteFromScreen();
-		} else {
-			resultScreen.addToScreen(key);
-		}
+	let key = e.key;
+	let type = "numeric", value = "0";
+
+	if (!validInputs.includes(key)) return;
+
+	value = key;
+
+	switch (key) {
+		case "Backspace":
+			type = "special";
+			value = "DELETE";
+			break;
+		case "Delete":
+			type = "special";
+			value = "CLR";
+			break;
+		case "Tab":
+			type = "special";
+			value = "BACK";
+			break;
+		case "+":
+		case "-":
+		case "*":
+		case "/":
+		case "%":
+			type = "operator";
+			break;
+		case "=":
+			type = "evaluate";
+			break;
+		default:
+			type = "numeric";
 	}
 
-	console.log(key);
+	console.table(key, type, value);
+	handleInput(type, value);
 };
 
 /**
@@ -41,4 +127,4 @@ const handleKeyDown = (e) => {
 
 document.addEventListener("keydown", handleKeyDown);
 
-buttons.forEach((button) => button.addEventListener("click", handleBtnClick));
+buttons.forEach((button) => button.addEventListener("click", handleBtnClick, true));
